@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Premium Dijital Ürünler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050e12;
+  --bg2:#071418;
+  --surface:rgba(5,18,16,.88);
+  --surface2:rgba(7,22,20,.92);
+  --surface3:rgba(9,26,22,.9);
+  --border:rgba(255,255,255,.07);
+  --border2:rgba(255,255,255,.12);
+  --border3:rgba(255,255,255,.22);
+  --pink:#f03080;
+  --pink2:#ff60a8;
+  --cyan:#00ddc0;
+  --cyan2:#7ffff0;
+  --yellow:#f5c518;
+  --purple:#00ddc0;
+  --orange:#ff6b35;
+  --accent:var(--pink);
+  --accent2:var(--cyan);
+  --text:#00ddc0;
+  --text2:#009e8a;
+  --muted:#0a2820;
+  --muted2:#1a6050;
+  --danger:#f02860;
+  --success:#00dca8;
+  --font-h:'Inter',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --r:10px;
+  --r2:16px;
+  --glow-pink:0 0 30px rgba(240,48,128,.4),0 0 60px rgba(240,48,128,.15);
+  --glow-cyan:0 0 30px rgba(0,221,192,.4),0 0 60px rgba(0,221,192,.15);
+}
+html{scroll-behavior:smooth;background:#050e12;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:transparent;color:var(--text);font-family:var(--font-body);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:14px;min-height:100vh;font-weight:400;line-height:1.5;width:100%;max-width:100vw}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(240,46,122,.5);border-radius:3px}
+.hidden{display:none!important}
+
+/* ══ ANIMATIONS ══ */
+@keyframes fade-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes pulse-glow{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes card-in{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes slide-up{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+@keyframes modal-bg-in{from{opacity:0}to{opacity:1}}
+
+/* Arka plan dikey çizgi animasyonu */
+@keyframes line-fall{
+  0%  {transform:translateY(-100%);opacity:0}
+  8%  {opacity:1}
+  88% {opacity:.6}
+  100%{transform:translateY(100vh);opacity:0}
+}
+
+/* Kart üzerindeki yatay beyaz shine */
+@keyframes card-shine{
+  0%  {transform:translateX(-120%) skewX(-18deg);opacity:0}
+  8%  {opacity:1}
+  100%{transform:translateX(220%) skewX(-18deg);opacity:0}
+}
+
+/* ══ BACKGROUND ══ */
+@keyframes aurora-shift{
+  0%  {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.bg-canvas{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  background:#050e12
+}
+/* Aurora layer — derin teal/zümrüt tonları */
+.bg-aurora-layer{
+  position:absolute;inset:-50%;
+  width:200%;height:200%;
+  background:conic-gradient(
+    from 0deg at 40% 35%,
+    #050e12 0deg,
+    #071418 40deg,
+    #061510 70deg,
+    #081a14 100deg,
+    #060f14 140deg,
+    #050c10 180deg,
+    #051210 220deg,
+    #071618 260deg,
+    #060e14 300deg,
+    #050e12 360deg
+  );
+  animation:aurora-shift 18s ease-in-out infinite;
+  background-size:200% 200%;
+  opacity:1
+}
+/* Renk havuzları — teal + zümrüt + petrol mavisi */
+.bg-pool-1{
+  position:absolute;
+  width:70%;height:55%;
+  top:-10%;left:-15%;
+  background:radial-gradient(ellipse,rgba(0,160,130,.18) 0%,transparent 65%);
+  filter:blur(80px);pointer-events:none
+}
+.bg-pool-2{
+  position:absolute;
+  width:55%;height:45%;
+  top:30%;right:-10%;
+  background:radial-gradient(ellipse,rgba(0,100,180,.12) 0%,transparent 65%);
+  filter:blur(90px);pointer-events:none
+}
+.bg-pool-3{
+  position:absolute;
+  width:50%;height:40%;
+  bottom:-5%;left:25%;
+  background:radial-gradient(ellipse,rgba(0,180,100,.08) 0%,transparent 65%);
+  filter:blur(100px);pointer-events:none
+}
+/* Vignette */
+.bg-vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 110% 110% at 50% 45%,transparent 25%,rgba(3,8,10,.92) 100%)
+}
+
+/* ══ YATAY TARAMA IŞINI ANİMASYONU ══ */
+@keyframes beam-sweep{
+  0%  {transform:translateX(-110%);opacity:0}
+  6%  {opacity:1}
+  94% {opacity:.7}
+  100%{transform:translateX(110vw);opacity:0}
+}
+
+.bg-beams{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.bg-beam{
+  position:absolute;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,220,180,.0) 5%,
+    rgba(0,220,180,.5) 30%,
+    rgba(0,255,200,.9) 50%,
+    rgba(0,220,180,.5) 70%,
+    rgba(0,220,180,.0) 95%,
+    transparent 100%
+  );
+  box-shadow:0 0 6px rgba(0,220,180,.4),0 0 12px rgba(0,220,180,.15);
+  animation:beam-sweep linear infinite;
+  width:35%
+}
+.bg-beam:nth-child(1){top:12%; animation-duration:8s;  animation-delay:0s;   width:30%;opacity:.7}
+.bg-beam:nth-child(2){top:27%; animation-duration:11s; animation-delay:2.8s; width:40%;opacity:.5}
+.bg-beam:nth-child(3){top:43%; animation-duration:9s;  animation-delay:5.5s; width:28%;opacity:.65}
+.bg-beam:nth-child(4){top:61%; animation-duration:13s; animation-delay:1.4s; width:38%;opacity:.4}
+.bg-beam:nth-child(5){top:76%; animation-duration:10s; animation-delay:7.2s; width:32%;opacity:.55}
+.bg-beam:nth-child(6){top:88%; animation-duration:12s; animation-delay:4.0s; width:26%;opacity:.35}
+
+/* ══ TICKER ══ */
+.ticker-bar{
+  position:relative;z-index:10;height:32px;overflow:hidden;display:flex;align-items:center;
+  background:transparent;
+  border-bottom:1px solid var(--border)
+}
+.ticker-bar::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(240,46,122,.06),rgba(0,180,150,.06),rgba(0,232,204,.06));
+  backdrop-filter:blur(4px)
+}
+.ticker-track{display:flex;gap:0;white-space:nowrap;animation:ticker 24s linear infinite;position:relative;z-index:1}
+.ticker-item{font-family:var(--font-mono);font-size:10px;color:var(--muted2);letter-spacing:3px;text-transform:uppercase;padding:0 28px;font-weight:400}
+.ticker-item span{color:rgba(240,46,122,.7);margin:0 3px}
+.ticker-sep{opacity:.4;margin:0 2px}
+
+/* ══ HEADER ══ */
+.hdr{
+  position:sticky;top:0;z-index:100;height:58px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;
+  background:rgba(5,5,15,.7);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px)
+}
+.hdr::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,46,122,.3),rgba(0,232,204,.25),transparent)
+}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
+.logo-mark{
+  width:32px;height:32px;
+  background:linear-gradient(135deg,rgba(240,46,122,.2),rgba(0,180,150,.2));
+  border:1px solid rgba(240,46,122,.3);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center
+}
+.logo-mark svg{width:16px;height:16px}
+.logo-text{font-family:var(--font-h);font-size:15px;font-weight:700;letter-spacing:2px;color:var(--text);text-transform:uppercase}
+.hdr-right{}
+
+/* ══ HERO ══ */
+.hero{
+  position:relative;z-index:5;
+  padding:80px 28px 60px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  min-height:80vh;
+  justify-content:center
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:10px;color:var(--muted2);
+  letter-spacing:4px;text-transform:uppercase;margin-bottom:32px;
+  animation:fade-up .5s ease .05s both
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:28px;height:1px;background:var(--border2)}
+.eyebrow-pip{width:5px;height:5px;background:var(--pink);border-radius:50%;box-shadow:0 0 8px var(--pink)}
+
+.hero-h{
+  font-family:var(--font-h);
+  font-size:clamp(44px,8vw,88px);
+  line-height:.92;
+  letter-spacing:-2px;
+  color:var(--text);
+  font-weight:900;
+  margin-bottom:22px;
+  animation:fade-up .6s ease .1s both
+}
+.hero-h .hi{
+  display:block;
+  font-weight:900;
+  color:#fff;
+  letter-spacing:-2px
+}
+.hero-h .hp{
+  display:block;
+  font-weight:900;
+  letter-spacing:-2px;
+  background:linear-gradient(135deg,var(--pink) 0%,var(--purple) 60%,var(--cyan) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 30px rgba(240,46,122,.4))
+}
+.hero-p{
+  font-size:15px;color:var(--text2);max-width:400px;line-height:1.65;
+  margin-bottom:40px;animation:fade-up .6s ease .18s both;font-weight:300
+}
+
+/* Code input area */
+.code-box{
+  width:100%;max-width:440px;
+  background:rgba(14,14,30,.7);
+  border:1px solid var(--border2);
+  border-radius:var(--r2);
+  padding:24px;
+  backdrop-filter:blur(20px);
+  box-shadow:0 8px 60px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);
+  animation:fade-up .6s ease .25s both;
+  position:relative;overflow:hidden
+}
+.code-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,46,122,.5),rgba(0,232,204,.4),transparent)
+}
+.cbox-label{
+  font-family:var(--font-mono);font-size:9px;color:var(--muted2);
+  letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px
+}
+.cbox-label::before{content:'';width:16px;height:1px;background:var(--border2)}
+.code-input-wrap{
+  display:flex;gap:8px;margin-bottom:12px
+}
+.code-inp{
+  flex:1;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border2);
+  border-radius:10px;
+  padding:13px 16px;
+  color:var(--text);
+  font-family:var(--font-mono);
+  font-size:14px;
+  letter-spacing:3px;
+  outline:none;
+  transition:border-color .2s,box-shadow .2s
+}
+.code-inp:focus{
+  border-color:rgba(240,46,122,.5);
+  box-shadow:0 0 0 3px rgba(240,46,122,.08),inset 0 0 20px rgba(240,46,122,.04)
+}
+.code-inp::placeholder{color:var(--muted);letter-spacing:2px}
+.code-btn{
+  padding:0 22px;
+  background:linear-gradient(135deg,var(--pink) 0%,var(--purple) 100%);
+  border:none;border-radius:10px;
+  color:#fff;
+  font-family:var(--font-h);font-size:12px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;
+  transition:all .25s;
+  box-shadow:0 4px 20px rgba(240,46,122,.3);
+  white-space:nowrap
+}
+.code-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,46,122,.45)}
+.code-btn:active{transform:translateY(0)}
+.code-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.code-error{font-family:var(--font-mono);font-size:11px;color:var(--danger);margin-top:8px;padding:8px 12px;background:rgba(240,48,96,.08);border:1px solid rgba(240,48,96,.2);border-radius:6px}
+.code-hint{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:2px;text-align:center;margin-top:10px}
+
+/* Trust badges */
+.trust{display:flex;gap:20px;margin-top:28px;animation:fade-up .6s ease .32s both;justify-content:center}
+.trust-it{
+  display:flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 16px
+}
+.trust-ic{font-size:16px}
+.trust-nm{font-size:12px;font-weight:600;color:var(--text)}
+.trust-sm{font-family:var(--font-mono);font-size:9px;color:var(--muted2);letter-spacing:1px;margin-top:1px}
+
+/* ══ SECTION ══ */
+.sec-wrap{position:relative;z-index:5;padding:0 28px 80px}
+.sec-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:28px;padding-bottom:20px;
+  border-bottom:1px solid var(--border)
+}
+.sec-tag{
+  font-family:var(--font-mono);font-size:9px;color:var(--pink);
+  letter-spacing:4px;text-transform:uppercase;margin-bottom:6px;
+  display:flex;align-items:center;gap:8px
+}
+.sec-tag::before{content:'';width:20px;height:1px;background:var(--pink);box-shadow:0 0 6px var(--pink)}
+.sec-h2{font-family:var(--font-h);font-size:clamp(22px,3.5vw,32px);font-weight:700;letter-spacing:-0.5px;color:var(--text)}
+.count-pill{
+  font-family:var(--font-mono);font-size:9px;color:var(--muted2);
+  letter-spacing:2px;text-transform:uppercase;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);
+  border-radius:20px;padding:5px 14px
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+
+/* ══ PRODUCT CARD ══ */
+.pcard{
+  background:rgba(12,12,28,.85);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .2s,box-shadow .3s;
+  animation:card-in .5s cubic-bezier(.22,1,.36,1) var(--d,0s) both;
+  position:relative
+}
+.pcard:hover{
+  transform:translateY(-6px) scale(1.01);
+  border-color:rgba(240,46,122,.25);
+  box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(240,46,122,.1)
+}
+.pshine{
+  position:absolute;inset:0;z-index:10;border-radius:inherit;
+  background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 50%);
+  pointer-events:none;
+  opacity:0;transition:opacity .3s
+}
+.pcard:hover .pshine{opacity:1}
+
+/* Otomatik beyaz shine çizgisi — 4-5 sn'de bir */
+.pcard::after{
+  content:'';
+  position:absolute;inset:0;z-index:11;
+  border-radius:inherit;
+  overflow:hidden;
+  pointer-events:none;
+  background:linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255,255,255,.18) 50%,
+    transparent 65%
+  );
+  animation:card-shine 4.5s ease-in-out infinite var(--shine-delay, 0s);
+  transform:translateX(-120%) skewX(-18deg)
+}
+.pcard:nth-child(1){--shine-delay:0s}
+.pcard:nth-child(2){--shine-delay:.6s}
+.pcard:nth-child(3){--shine-delay:1.2s}
+.pcard:nth-child(4){--shine-delay:1.8s}
+.pcard:nth-child(5){--shine-delay:2.4s}
+.pcard:nth-child(6){--shine-delay:3.0s}
+.pcard:nth-child(7){--shine-delay:3.6s}
+.pcard:nth-child(8){--shine-delay:4.2s}
+.pcard-top{position:relative;overflow:hidden}
+.pcard-color{position:absolute;inset:0;z-index:1}
+.pcard-blob{
+  position:absolute;bottom:-30%;right:-20%;
+  width:160%;height:160%;
+  border-radius:50%;z-index:2;
+  filter:blur(40px);
+  opacity:.25
+}
+.pcard-bg-overlay{position:absolute;inset:0;z-index:3;background:linear-gradient(to bottom,rgba(5,5,15,.0) 0%,rgba(5,5,15,.65) 100%)}
+.pcard-content{position:relative;z-index:5;display:flex;flex-direction:column;height:100%;justify-content:space-between;padding:14px}
+.pcard-row1{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:auto}
+.brand-logo{
+  width:46px;height:46px;overflow:hidden;flex-shrink:0;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:12px;
+  background:rgba(0,0,0,.5)
+}
+.brand-fb{display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--font-h);font-size:14px;width:100%;height:100%}
+.tier-tag{
+  background:rgba(0,0,0,.5);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:6px;
+  padding:4px 10px;
+  font-family:var(--font-mono);font-size:7px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase
+}
+.pcard-name{font-family:var(--font-h);font-size:17px;font-weight:700;color:#fff;letter-spacing:-.3px;margin-top:auto;padding-top:8px}
+.pcard-desc{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px;font-family:var(--font-mono)}
+.pcard-bottom{
+  padding:11px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--border);
+  background:rgba(5,5,15,.6)
+}
+.stock-row{display:flex;align-items:center;gap:6px}
+.stock-dot{width:6px;height:6px;background:var(--success);border-radius:50%;box-shadow:0 0 8px var(--success)}
+.stock-txt{font-size:10px;color:var(--muted2);font-family:var(--font-mono);letter-spacing:1px}
+.stock-none{background:var(--danger);box-shadow:0 0 8px var(--danger)}
+.card-cta{
+  font-family:var(--font-mono);font-size:9px;color:var(--pink);letter-spacing:2px;
+  display:flex;align-items:center;gap:4px;
+  opacity:0;transform:translateX(8px);transition:all .25s
+}
+.pcard:hover .card-cta{opacity:1;transform:translateX(0)}
+
+/* ══ HOW IT WORKS ══ */
+@keyframes how-card-glow{0%,100%{box-shadow:0 0 0 0 rgba(240,46,122,.0)}50%{box-shadow:0 0 30px 0 rgba(240,46,122,.07)}}
+.how-section{
+  position:relative;
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+  z-index:5;
+  padding:80px 28px
+}
+.how-inner{position:relative;z-index:1;width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center}
+.how-label{
+  font-family:var(--font-mono);font-size:9px;color:var(--muted2);letter-spacing:5px;text-transform:uppercase;text-align:center;margin-bottom:16px;
+  display:flex;align-items:center;gap:20px;width:100%;max-width:600px
+}
+.how-label::before,.how-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.how-title{font-family:var(--font-h);font-size:clamp(26px,4vw,40px);font-weight:800;text-align:center;margin-bottom:50px;letter-spacing:-1px;color:#fff}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%}
+@media(max-width:640px){.how-grid{grid-template-columns:1fr}.how-section{padding:60px 18px}}
+.how-card{
+  background:rgba(12,12,28,.85);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px 22px;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;
+  animation:how-card-glow 4s ease-in-out infinite
+}
+.how-card:nth-child(2){animation-delay:1.3s}
+.how-card:nth-child(3){animation-delay:2.6s}
+.how-card:hover{
+  border-color:rgba(240,46,122,.25);
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,.4),0 0 0 1px rgba(240,46,122,.08)
+}
+.how-card::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);
+  pointer-events:none
+}
+.how-num{
+  font-family:var(--font-mono);font-size:9px;color:var(--pink);letter-spacing:3px;margin-bottom:16px;
+  display:inline-flex;align-items:center;gap:8px
+}
+.how-num::before{content:'';width:12px;height:1px;background:var(--pink)}
+.how-em{font-size:28px;margin-bottom:12px;display:block}
+.how-t{font-family:var(--font-h);font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px;color:var(--text)}
+.how-d{font-size:12px;color:var(--text2);line-height:1.65;font-family:var(--font-body)}
+
+/* ══ FOOTER ══ */
+.footer{
+  position:relative;z-index:5;
+  border-top:1px solid var(--border);
+  padding:22px 28px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  background:rgba(5,5,15,.8);
+  backdrop-filter:blur(10px)
+}
+.footer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,46,122,.3),rgba(0,232,204,.2),transparent)
+}
+
+/* ══ STEP PAGE BACKGROUNDS (same as main) ══ */
+.step-page-bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  background:#050e12
+}
+.step-page-bg .sp-aurora{
+  position:absolute;inset:-50%;
+  width:200%;height:200%;
+  background:conic-gradient(
+    from 0deg at 40% 35%,
+    #050e12 0deg,
+    #071418 40deg,
+    #061510 70deg,
+    #081a14 100deg,
+    #060f14 140deg,
+    #050c10 180deg,
+    #051210 220deg,
+    #071618 260deg,
+    #060e14 300deg,
+    #050e12 360deg
+  );
+  animation:aurora-shift 18s ease-in-out infinite;
+  background-size:200% 200%;
+  opacity:1
+}
+.step-page-bg .sp-pool-1{
+  position:absolute;width:70%;height:55%;top:-10%;left:-15%;
+  background:radial-gradient(ellipse,rgba(0,160,130,.16) 0%,transparent 65%);
+  filter:blur(80px);pointer-events:none
+}
+.step-page-bg .sp-pool-2{
+  position:absolute;width:55%;height:45%;top:30%;right:-10%;
+  background:radial-gradient(ellipse,rgba(0,100,180,.11) 0%,transparent 65%);
+  filter:blur(90px);pointer-events:none
+}
+.step-page-bg .sp-vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 110% 110% at 50% 45%,transparent 25%,rgba(3,8,10,.92) 100%)
+}
+.step-page-bg .sp-stars{position:absolute;inset:0}
+
+/* ══ OVERLAY / MODAL SYSTEM ══ */
+.dash-overlay{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-end;justify-content:center}
+.dash-backdrop{position:absolute;inset:0;background:rgba(2,2,10,.92);backdrop-filter:blur(20px);animation:modal-bg-in .25s ease both}
+#step1-modal{align-items:center}
+.dash-overlay.step-full{align-items:stretch;justify-content:stretch}
+.dash-overlay.step-full .dash-backdrop{background:#05050f!important;backdrop-filter:none!important;animation:none}
+.step1-box,.dash-box,.acct-box{position:relative;z-index:1}
+
+/* ══ STEP 1 ══ */
+.step1-box{
+  position:relative;z-index:1;
+  width:100%;max-width:100%;height:100vh;
+  background:transparent;border:none;
+  padding:0;overflow-x:hidden;overflow-y:auto;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  animation:fade-in .35s ease both
+}
+.s1-inner{
+  width:90%;max-width:420px;
+  background:rgba(12,12,26,.9);
+  border:1px solid var(--border2);
+  border-radius:var(--r2);
+  padding:32px 26px 36px;
+  box-shadow:0 0 80px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.04);
+  backdrop-filter:blur(16px);
+  position:relative;overflow:hidden
+}
+.s1-inner::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,46,122,.6),rgba(0,180,150,.5),transparent)
+}
+.s1-close-btn{
+  position:fixed;top:20px;right:20px;width:38px;height:38px;
+  background:rgba(12,12,26,.9);border:1px solid var(--border2);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted2);cursor:pointer;font-size:14px;transition:all .2s;z-index:10;
+  backdrop-filter:blur(8px)
+}
+.s1-close-btn:hover{background:rgba(240,46,122,.15);color:var(--pink);border-color:rgba(240,46,122,.4)}
+.s1-prod-icon{
+  width:68px;height:68px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;
+  margin:0 auto 12px
+}
+.s1-usage-bar-wrap{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px 14px;margin:16px 0 10px
+}
+.s1-usage-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.s1-usage-lbl{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.s1-usage-val{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--danger);text-shadow:0 0 8px var(--danger)}
+.s1-bar{height:2px;background:var(--border);border-radius:2px;overflow:hidden}
+.s1-bar-fill{width:100%;height:100%;background:linear-gradient(90deg,var(--danger),var(--pink))}
+.s1-info{
+  background:rgba(0,232,204,.06);border:1px solid rgba(0,232,204,.15);
+  border-radius:8px;
+  padding:10px 12px;font-size:11px;color:#80fff0;line-height:1.6;margin-bottom:8px;font-family:var(--font-mono)
+}
+.s1-code-line{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:2px;margin-bottom:16px;text-align:center}
+.s1-tier-badge{
+  display:inline-flex;align-items:center;
+  background:rgba(240,46,122,.08);border:1px solid rgba(240,46,122,.18);
+  border-radius:6px;
+  padding:4px 14px;
+  font-family:var(--font-mono);font-size:9px;font-weight:500;color:var(--pink);letter-spacing:2px;text-transform:uppercase;margin-top:8px
+}
+.s1-go-btn{
+  width:100%;padding:14px;
+  background:linear-gradient(135deg,var(--pink) 0%,var(--purple) 100%);
+  color:#fff;border:none;border-radius:10px;
+  font-family:var(--font-h);font-size:13px;font-weight:700;letter-spacing:3px;
+  cursor:pointer;transition:all .25s;
+  box-shadow:0 4px 24px rgba(240,46,122,.3)
+}
+.s1-go-btn:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(240,46,122,.45)}
+.s1-copy-btn{
+  border:1px solid var(--border2);border-radius:6px;
+  padding:4px 12px;
+  background:var(--surface2);color:var(--muted2);cursor:pointer;
+  font-size:10px;font-weight:500;font-family:var(--font-mono);transition:all .2s
+}
+.s1-copy-btn.ok{background:rgba(0,232,204,.12);color:var(--success);border-color:rgba(0,232,204,.25)}
+
+/* Step indicator */
+.step-indicator{
+  position:fixed;top:22px;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:6px;z-index:10;
+  background:rgba(12,12,26,.8);backdrop-filter:blur(12px);
+  border:1px solid var(--border);border-radius:30px;
+  padding:8px 16px
+}
+.step-dot{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-size:9px;font-weight:500;
+  border:1px solid var(--border2);color:var(--muted);
+  transition:all .3s
+}
+.step-dot.active{border-color:var(--pink);color:var(--pink);background:rgba(240,46,122,.1);box-shadow:0 0 10px rgba(240,46,122,.2)}
+.step-dot.done{border-color:var(--success);color:var(--success);background:rgba(0,232,204,.08)}
+.step-line{width:18px;height:1px;background:var(--border)}
+
+/* ══ STEP 2 DASH ══ */
+.dash-box{
+  position:relative;z-index:1;
+  width:100%;max-width:100%;height:100vh;
+  overflow-x:hidden;overflow-y:auto;background:transparent;
+  animation:fade-in .35s ease both;display:flex;flex-direction:column
+}
+.dash-topbar{
+  background:rgba(5,5,15,.85);
+  border-bottom:1px solid var(--border);
+  padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:10;flex-shrink:0;backdrop-filter:blur(16px)
+}
+.dash-topbar::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,46,122,.25),transparent);opacity:.7
+}
+.dash-ts-logo{display:none}
+.dtb-left{display:flex;align-items:center;gap:10px}
+.dtb-code{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:1px}
+.dtb-code span{color:var(--pink);font-weight:500}
+.dtb-sep{width:1px;height:12px;background:var(--border2)}
+.dtb-stat{font-family:var(--font-mono);font-size:9px;color:var(--success);font-weight:500;letter-spacing:2px}
+.dtb-exit-btn{
+  height:30px;padding:0 16px;
+  background:transparent;
+  border:1px solid var(--border2);border-radius:8px;
+  color:var(--muted2);cursor:pointer;font-size:10px;
+  font-family:var(--font-mono);letter-spacing:1px;transition:all .2s
+}
+.dtb-exit-btn:hover{border-color:var(--border3);color:var(--text)}
+.dash-key-card{
+  margin:14px 16px 0;
+  background:rgba(12,12,26,.85);
+  border:1px solid var(--border2);
+  border-radius:14px;
+  padding:16px 18px;
+  animation:fade-in .3s ease both .1s;
+  position:relative;overflow:hidden;
+  backdrop-filter:blur(12px);
+  box-sizing:border-box
+}
+.dash-key-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),var(--cyan),transparent)
+}
+.dkc-lbl{font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.dkc-icon{
+  width:24px;height:24px;
+  background:rgba(0,232,204,.1);
+  border:1px solid rgba(0,232,204,.15);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;font-size:11px
+}
+.dkc-val{font-family:var(--font-mono);font-size:13px;color:var(--cyan);letter-spacing:3px;word-break:break-all;margin:5px 0;text-shadow:0 0 10px var(--cyan)}
+.dash-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:9px 0}
+.dstat{text-align:center}
+.dstat-lbl{font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px}
+.dstat-val{font-family:var(--font-h);font-size:24px;color:var(--cyan);letter-spacing:1px}
+.dstat-sub{font-size:8px;color:var(--muted)}
+.dlimit-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(240,48,96,.07);border:1px solid rgba(240,48,96,.2);
+  border-radius:6px;
+  padding:4px 10px;font-family:var(--font-mono);font-size:10px;color:var(--danger);font-weight:500;letter-spacing:1px
+}
+.dlimit-dot{width:4px;height:4px;border-radius:50%;background:var(--danger);box-shadow:0 0 5px var(--danger)}
+.dash-inv-hdr{padding:14px 16px 6px;display:flex;align-items:center;justify-content:space-between;animation:fade-in .3s ease both .2s}
+.dash-inv-title{display:flex;align-items:center;gap:8px}
+.div-bar{width:3px;height:16px;background:var(--pink);border-radius:2px;box-shadow:0 0 8px var(--pink)}
+.div-txt{font-family:var(--font-h);font-size:15px;font-weight:700;letter-spacing:-.3px}
+.div-badge{
+  background:rgba(240,46,122,.08);color:var(--pink);font-size:9px;font-weight:500;
+  padding:2px 9px;letter-spacing:1px;font-family:var(--font-mono);
+  border:1px solid rgba(240,46,122,.14);border-radius:5px
+}
+.dash-search{
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:6px 11px;
+  color:var(--muted2);font-size:11px;outline:none;font-family:var(--font-mono);width:110px;transition:border-color .2s
+}
+.dash-search:focus{border-color:var(--border2);color:var(--text)}
+.dash-item-card{
+  margin:0 16px 10px;overflow:hidden;position:relative;animation:fade-up .4s ease both;
+  border:1px solid var(--border);border-radius:14px;
+  background:rgba(12,12,26,.8);backdrop-filter:blur(10px)
+}
+.dash-item-img{width:100%;height:150px;object-fit:cover;display:block}
+.dash-item-img-ph{width:100%;height:150px;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:42px}
+.dash-item-badges{position:absolute;top:9px;left:9px;right:9px;display:flex;justify-content:space-between}
+.dash-got-badge{background:var(--success);color:#000;font-size:8px;font-weight:700;padding:3px 7px;letter-spacing:2px;font-family:var(--font-mono);border-radius:4px}
+.dash-plat-badge{background:rgba(0,0,0,.7);color:var(--muted2);font-size:8px;font-weight:500;padding:3px 7px;display:flex;align-items:center;gap:3px;font-family:var(--font-mono);backdrop-filter:blur(4px);border-radius:4px}
+.dash-item-info{background:var(--surface);border-top:1px solid var(--border);padding:10px 12px}
+.dash-item-name{font-weight:700;font-size:13px;margin-bottom:9px;letter-spacing:-.3px;font-family:var(--font-h)}
+.dash-goto-btn{
+  background:rgba(240,46,122,.08);border:1px solid rgba(240,46,122,.2);border-radius:8px;
+  color:var(--pink);font-size:10px;font-weight:600;padding:7px 16px;
+  cursor:pointer;display:inline-flex;align-items:center;gap:4px;
+  font-family:var(--font-mono);letter-spacing:2px;transition:all .2s;text-transform:uppercase
+}
+.dash-goto-btn:hover{background:rgba(240,46,122,.15);box-shadow:0 0 15px rgba(240,46,122,.2)}
+.dash-hist-wrap{padding:12px 16px 8px}
+.dash-hist-hdr{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.hist-bar{width:3px;height:16px;background:var(--cyan);border-radius:2px;box-shadow:0 0 8px var(--cyan)}
+.hist-title{font-family:var(--font-h);font-size:15px;font-weight:700;letter-spacing:-.3px}
+.hist-badge{
+  background:rgba(0,232,204,.08);color:var(--cyan);font-size:9px;font-weight:500;
+  padding:2px 9px;font-family:var(--font-mono);border:1px solid rgba(0,232,204,.15);border-radius:5px
+}
+.hist-table{background:rgba(12,12,26,.8);border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(10px)}
+.hist-row-head,.hist-row{display:grid;grid-template-columns:2fr 2fr 1fr 1fr;padding:9px 13px;align-items:center;gap:6px}
+.hist-row-head{border-bottom:1px solid var(--border)}
+.hist-col-lbl{font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+
+/* ══ STEP 3 ══ */
+.acct-box{position:relative;z-index:1;width:100%;max-width:100%;height:100vh;overflow-x:hidden;overflow-y:auto;background:transparent;animation:fade-in .35s ease both;display:flex;flex-direction:column}
+.acct-topbar{
+  background:rgba(5,5,15,.85);border-bottom:1px solid var(--border);
+  padding:12px 20px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:10;flex-shrink:0;backdrop-filter:blur(16px)
+}
+.acct-topbar::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,232,204,.25),transparent);opacity:.6
+}
+.acct-hero{position:relative;overflow:hidden;min-height:200px;flex-shrink:0}
+.acct-hero-img{width:100%;height:200px;object-fit:cover;display:block}
+.acct-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,15,.1) 20%,rgba(5,5,15,1) 100%)}
+.acct-hero-badges{position:absolute;top:13px;left:14px;display:flex;gap:7px}
+.acct-plat-badge{background:rgba(0,0,0,.8);color:#fff;font-size:9px;font-weight:500;padding:5px 11px;backdrop-filter:blur(6px);font-family:var(--font-mono);letter-spacing:2px;text-transform:uppercase;border-radius:6px}
+.acct-active-badge{background:rgba(0,232,170,.12);border:1px solid rgba(0,232,170,.3);color:var(--success);font-size:9px;font-weight:500;padding:5px 11px;display:flex;align-items:center;gap:5px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:1px;border-radius:6px}
+.acct-active-dot{width:5px;height:5px;border-radius:50%;background:var(--success);box-shadow:0 0 7px var(--success);animation:blink 1s ease infinite}
+.acct-title{font-family:var(--font-h);font-size:28px;font-weight:800;padding:0 16px 4px;letter-spacing:-.5px;animation:fade-in .3s ease both .1s;text-transform:uppercase;line-height:1.1}
+.acct-date{font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:0 16px 16px;letter-spacing:1px}
+.acct-field{
+  margin:0 16px 8px;
+  background:rgba(8,8,22,.85);border:1px solid var(--border2);
+  border-radius:12px;
+  display:flex;align-items:center;gap:12px;padding:14px 16px;
+  animation:fade-up .35s ease both;transition:border-color .2s,box-shadow .2s;
+  backdrop-filter:blur(12px)
+}
+.acct-field:hover{border-color:var(--border3);box-shadow:0 0 20px rgba(0,232,204,.05)}
+.acct-field-icon{
+  width:36px;height:36px;
+  background:rgba(0,232,204,.06);
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+  border:1px solid rgba(0,232,204,.12);border-radius:10px
+}
+.acct-field-inner{flex:1;min-width:0}
+.acct-field-label{font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
+.acct-field-val{font-size:14px;font-weight:500;font-family:var(--font-mono);color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acct-field-val.blurred{filter:blur(6px);user-select:none}
+.acct-copy-btn{
+  border:1px solid var(--border2);border-radius:8px;
+  padding:7px 14px;
+  background:var(--surface2);color:var(--muted2);cursor:pointer;font-size:10px;
+  flex-shrink:0;transition:all .2s;font-family:var(--font-mono);letter-spacing:1px;
+  text-transform:uppercase
+}
+.acct-copy-btn:hover{border-color:var(--border3);color:var(--text);background:var(--surface3)}
+.acct-copy-btn.ok{background:rgba(0,232,204,.12);color:var(--success);border-color:rgba(0,232,204,.25)}
+.acct-note-box{
+  margin:8px 16px;background:rgba(245,197,24,.05);border:1px solid rgba(245,197,24,.2);
+  border-radius:12px;
+  padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  backdrop-filter:blur(8px)
+}
+.acct-note-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.acct-note-lbl{font-family:var(--font-mono);font-size:8px;color:#f5c518;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px}
+.acct-note-txt{font-size:12px;color:#ffd460;line-height:1.7;font-family:var(--font-body)}
+.acct-2fa{margin:7px 16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;animation:fade-up .35s ease both .2s}
+.acct-2fa-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.acct-2fa-left{display:flex;align-items:center;gap:9px}
+.acct-2fa-icon{width:28px;height:28px;background:rgba(0,180,150,.15);border:1px solid rgba(0,180,150,.25);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px}
+.acct-2fa-label{font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:-.2px}
+.acct-2fa-sub{font-size:10px;color:var(--muted2);font-family:var(--font-mono)}
+.otp-display{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:14px;text-align:center}
+.otp-code{font-family:var(--font-mono);font-size:32px;letter-spacing:8px;color:var(--cyan);text-shadow:0 0 20px var(--cyan),0 0 40px rgba(0,232,204,.3)}
+.otp-progress{height:2px;background:var(--border2);border-radius:2px;overflow:hidden;margin-top:10px}
+.otp-bar-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width 1s linear}
+.otp-timer{font-family:var(--font-mono);font-size:10px;color:var(--muted2);margin-top:6px;letter-spacing:1px}
+.acct-bottom-pad{height:20px}
+
+/* ══ ADMIN PANEL ══ */
+.admin-overlay{position:fixed;inset:0;z-index:300;display:flex;align-items:flex-end;justify-content:center}
+.admin-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(16px);animation:modal-bg-in .25s ease both}
+.admin-panel{
+  position:relative;z-index:1;width:100%;max-width:640px;height:90vh;
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  border-top:2px solid var(--pink);
+  border-radius:16px 16px 0 0;
+  display:flex;flex-direction:column;animation:slide-up .3s ease both
+}
+.admin-hdr{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.admin-tabs-row{display:flex;gap:0;border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto}
+.atab{flex:1;padding:10px;background:transparent;border:none;border-right:1px solid var(--border);color:var(--muted2);cursor:pointer;font-size:10px;font-family:var(--font-mono);letter-spacing:1px;text-transform:uppercase;transition:all .2s;white-space:nowrap}
+.atab:hover{color:var(--text);background:rgba(240,46,122,.04)}
+.atab.on{color:var(--pink);background:rgba(240,46,122,.08);border-bottom:1px solid var(--pink)}
+.admin-body{flex:1;overflow-y:auto;padding:14px}
+/* Admin form elements */
+.fi{
+  background:var(--bg);border:1px solid var(--border2);border-radius:8px;
+  padding:9px 12px;color:var(--text);font-size:12px;
+  font-family:var(--font-mono);outline:none;width:100%;transition:border-color .2s
+}
+.fi:focus{border-color:var(--border3);color:var(--text)}
+.fi.mono{font-family:var(--font-mono)}
+.fsel{
+  background:var(--bg);border:1px solid var(--border2);border-radius:8px;
+  padding:9px 12px;color:var(--text);font-size:12px;
+  font-family:var(--font-body);outline:none;width:100%;transition:border-color .2s;cursor:pointer
+}
+.fl{font-family:var(--font-mono);font-size:9px;color:var(--muted2);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:5px}
+.ib{padding:7px 13px;font-size:10px;font-family:var(--font-mono);cursor:pointer;transition:all .2s;border:1px solid;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;border-radius:8px}
+.ib-pri{background:var(--pink);border-color:var(--pink);color:#fff;font-weight:600}
+.ib-pri:hover{filter:brightness(1.1);box-shadow:0 0 15px rgba(240,46,122,.3)}
+.ib-sec{background:transparent;border-color:var(--border2);color:var(--muted2)}
+.ib-sec:hover{border-color:var(--border3);color:var(--text)}
+.ib-red{background:transparent;border-color:rgba(240,48,96,.3);color:var(--danger)}
+.ib-red:hover{background:rgba(240,48,96,.1)}
+.ib-gst{background:transparent;border-color:var(--border);color:var(--muted2)}
+.ib-gst:hover{border-color:var(--border2);color:var(--text)}
+.prod-row{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--surface);margin-bottom:8px;transition:border-color .2s}
+.prod-row:hover{border-color:var(--border2)}
+.code-row{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid var(--border);border-radius:10px;background:var(--surface);margin-bottom:7px;transition:border-color .2s}
+.code-row:hover{border-color:var(--border2)}
+.status-pill{font-family:var(--font-mono);font-size:8px;font-weight:600;padding:2px 9px;letter-spacing:1px;text-transform:uppercase;border-radius:4px}
+.pill-ok{background:rgba(0,232,170,.1);color:var(--success);border:1px solid rgba(0,232,170,.2)}
+.pill-red{background:rgba(240,48,96,.1);color:var(--danger);border:1px solid rgba(240,48,96,.2)}
+.ftab{padding:5px 12px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--muted2);cursor:pointer;font-size:9px;font-family:var(--font-mono);letter-spacing:1px;transition:all .2s}
+.ftab.on{background:rgba(240,46,122,.1);border-color:rgba(240,46,122,.3);color:var(--pink)}
+.otp-box{background:rgba(0,232,204,.05);border:1px solid rgba(0,232,204,.15);border-radius:8px;padding:10px 14px;font-size:11px;color:#80fff0;font-family:var(--font-mono)}
+.settings-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
+.settings-card-title{font-weight:700;font-size:13px;margin-bottom:8px;letter-spacing:-.3px;font-family:var(--font-h)}
+.prod-edit-form{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
+
+/* ══ MODAL LOGIN ══ */
+.modal-overlay{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center}
+.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(20px)}
+.modal-box{
+  position:relative;z-index:1;
+  background:rgba(12,12,26,.95);
+  border:1px solid var(--border2);
+  border-radius:var(--r2);
+  border-top:2px solid var(--pink);
+  padding:36px 32px;width:90%;max-width:360px;
+  box-shadow:0 0 80px rgba(240,46,122,.15),0 0 0 1px rgba(255,255,255,.04)
+}
+.modal-close{position:absolute;top:14px;right:14px;width:28px;height:28px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all .2s}
+.modal-close:hover{background:var(--surface3);color:var(--text)}
+.modal-icon{font-size:28px;margin-bottom:10px}
+.modal-title{font-family:var(--font-h);font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:4px;text-transform:uppercase}
+.modal-sub{font-size:11px;color:var(--muted2);font-family:var(--font-mono)}
+
+/* ══ RESPONSIVE ══ */
+.pcard:nth-child(1){--d:.00s}.pcard:nth-child(2){--d:.07s}.pcard:nth-child(3){--d:.14s}
+.pcard:nth-child(4){--d:.21s}.pcard:nth-child(5){--d:.28s}.pcard:nth-child(6){--d:.35s}
+.pcard:nth-child(7){--d:.42s}.pcard:nth-child(8){--d:.49s}
+
+/* Prevent horizontal overflow everywhere */
+.dash-topbar,.acct-topbar{box-sizing:border-box;width:100%}
+.dash-inv-hdr,.dash-hist-wrap{box-sizing:border-box}
+[style*="grid-template-columns:auto 1fr auto auto auto"]{flex-wrap:wrap;overflow:hidden}
+
+@media(max-width:640px){
+  .hdr{padding:0 16px}
+  .hero{padding:52px 18px 36px}
+  .code-box{padding:20px}
+  .sec-wrap{padding:0 16px 60px}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .footer{padding:16px 18px;flex-direction:column;gap:6px;text-align:center}
+  .code-input-wrap{flex-direction:column}
+  .code-btn{padding:13px}
+  .dash-key-card{padding:12px}
+  .dash-key-card>div{grid-template-columns:auto 1fr!important;gap:8px!important}
+  .dlimit-badge{display:none}
+  .dash-topbar,.acct-topbar{padding:10px 12px}
+  .step-indicator{gap:4px;padding:6px 12px}
+  .step-line{width:12px}
+  .hist-row,.hist-row-head{grid-template-columns:1.5fr 1.5fr 1fr;font-size:9px}
+  .hist-row>span:last-child,.hist-row-head>span:last-child{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg-canvas">
+  <div class="bg-aurora-layer"></div>
+  <div class="bg-pool-1"></div>
+  <div class="bg-pool-2"></div>
+  <div class="bg-pool-3"></div>
+  <div class="bg-beams">
+    <div class="bg-beam"></div>
+    <div class="bg-beam"></div>
+    <div class="bg-beam"></div>
+    <div class="bg-beam"></div>
+    <div class="bg-beam"></div>
+    <div class="bg-beam"></div>
+  </div>
+  <div class="bg-vignette"></div>
+</div>
+<canvas id="bg-canvas-legacy" style="display:none"></canvas>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-track" id="ticker-inner">
+    <span class="ticker-item">Premium Hesaplar <span>◆</span></span>
+    <span class="ticker-item">Anlık Erişim <span>◆</span></span>
+    <span class="ticker-item">Tek Kullanımlık Kod <span>◆</span></span>
+    <span class="ticker-item">Güvenli Dağıtım <span>◆</span></span>
+    <span class="ticker-item">Premium Hesaplar <span>◆</span></span>
+    <span class="ticker-item">Anlık Erişim <span>◆</span></span>
+    <span class="ticker-item">Tek Kullanımlık Kod <span>◆</span></span>
+    <span class="ticker-item">Güvenli Dağıtım <span>◆</span></span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="logo" id="logo-wrap">
+    <div class="logo-mark">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 2L4.5 8.5H8L6.5 14L11.5 7.5H8L9 2Z" fill="#f02e7a" stroke="#f02e7a" stroke-width=".3" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="hdr-right"></div>
+</header>
+
+<!-- HERO -->
+<div class="hero" style="position:relative;z-index:5">
+  <div class="hero-eyebrow">
+    <div class="eyebrow-pip"></div>
+    Dijital Ürünler Mağazası
+    <div class="eyebrow-pip"></div>
+  </div>
+  <h1 class="hero-h">
+    <span class="hi">PREMIUM</span>
+    <span class="hp">HESAPLAR</span>
+  </h1>
+  <p class="hero-p">Satın aldığın ürüne anında erişmek için tek yapman gereken — kodunu girmek.</p>
+
+  <div class="code-box">
+    <div class="cbox-label">Erişim Anahtarın</div>
+    <div class="code-input-wrap">
+      <input id="hero-code-input" class="code-inp" placeholder="XXXX — YYYY — ZZZZ" maxlength="14"
+        oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')submitCode()"/>
+      <button class="code-btn" id="hero-submit-btn" onclick="submitCode()">DEVAM</button>
+    </div>
+    <div id="hero-code-error" class="code-error hidden"></div>
+    <div class="code-hint">// Kodun satın alma sonrası iletilir · Tek kullanımlık //</div>
+  </div>
+
+  <div class="trust">
+    <div class="trust-it">
+      <div class="trust-ic">⚡</div>
+      <div><div class="trust-nm">Anında</div><div class="trust-sm">Kod ile teslim</div></div>
+    </div>
+    <div class="trust-it">
+      <div class="trust-ic">🔒</div>
+      <div><div class="trust-nm">Tek Kullanım</div><div class="trust-sm">Güvenli dağıtım</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="sec-wrap" id="products-section" style="position:relative;z-index:5;margin-top:40px">
+  <div class="sec-head">
+    <div>
+      <div class="sec-tag">Katalog</div>
+      <div class="sec-h2">Mevcut Ürünler</div>
+    </div>
+    <span class="count-pill" id="prod-count">8 ürün</span>
+  </div>
+  <div class="grid" id="products-grid"></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="how-inner">
+    <div class="how-label">Nasıl Çalışır</div>
+    <div class="how-title">Üç Adımda Erişim</div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <span class="how-em">💳</span>
+        <div class="how-t">Satın Al</div>
+        <div class="how-d">Ürünü satın al ve benzersiz kodunu al</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <span class="how-em">🔑</span>
+        <div class="how-t">Kodu Gir</div>
+        <div class="how-d">Siteye gelip kodunu giriş kutusuna yaz</div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <span class="how-em">✅</span>
+        <div class="how-t">Bilgilere Ulaş</div>
+        <div class="how-d">Hesap bilgilerin anında ekrana gelir</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" style="position:relative;z-index:5">
+  <span style="font-size:10px;color:var(--muted);font-family:var(--font-mono)">// Tek kullanımlık kodlar · Güvenli dağıtım</span>
+</footer>
+
+<!-- STEP 1 MODAL -->
+<div class="dash-overlay hidden step-full" id="step1-modal">
+  <div class="dash-backdrop"></div>
+  <div class="step-page-bg">
+    <div class="sp-aurora"></div>
+    <div class="sp-pool-1"></div>
+    <div class="sp-pool-2"></div>
+    <div class="sp-vignette"></div>
+    <canvas class="sp-stars" id="s1-stars-canvas" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+  </div>
+  <div class="step1-box" id="step1-box">
+    <button class="s1-close-btn" onclick="closeDash()">✕</button>
+    <!-- Step indicator -->
+    <div class="step-indicator">
+      <div class="step-dot active">1</div>
+      <div class="step-line"></div>
+      <div class="step-dot">2</div>
+      <div class="step-line"></div>
+      <div class="step-dot">3</div>
+    </div>
+    <div class="s1-inner">
+      <div id="s1-prod-area"></div>
+      <div class="s1-usage-bar-wrap">
+        <div class="s1-usage-row">
+          <span class="s1-usage-lbl">Kullanım Hakkı</span>
+          <span class="s1-usage-val">1 / 1</span>
+        </div>
+        <div class="s1-bar"><div class="s1-bar-fill"></div></div>
+      </div>
+      <div class="s1-info">🔒 Bu kod tek seferliktir ve artık kullanılmış olarak işaretlendi.</div>
+      <div class="s1-code-line" id="s1-codeline"></div>
+      <button class="s1-go-btn" onclick="openDashboard()">HESABA GİT →</button>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 MODAL -->
+<div class="dash-overlay hidden step-full" id="dash-modal">
+  <div class="dash-backdrop" onclick="closeDash()"></div>
+  <div class="step-page-bg" id="dash-bg">
+    <div class="sp-aurora"></div>
+    <div class="sp-pool-1"></div>
+    <div class="sp-pool-2"></div>
+    <div class="sp-vignette"></div>
+    <canvas class="sp-stars" id="dash-stars-canvas" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+  </div>
+  <div class="dash-box" id="dash-box">
+    <div class="dash-topbar">
+      <div class="dtb-left">
+        <div class="dash-ts-logo" id="dash-ts-abbr">TS</div>
+        <div class="dtb-code">KEY: <span id="dash-key-topbar">—</span></div>
+        <div class="dtb-sep"></div>
+        <div class="dtb-stat">∞ LİMİTSİZ</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="step-indicator" style="position:static;transform:none;background:transparent;border:none;padding:0;backdrop-filter:none">
+          <div class="step-dot done">1</div>
+          <div class="step-line"></div>
+          <div class="step-dot active">2</div>
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+        </div>
+        <button onclick="closeDash()" class="dtb-exit-btn">↩ ÇIKIŞ</button>
+      </div>
+    </div>
+    <div class="dash-key-card">
+      <div style="display:grid;grid-template-columns:auto 1fr auto auto auto;align-items:center;gap:12px">
+        <div class="dkc-icon">🗝</div>
+        <div>
+          <div class="dkc-lbl">ERİŞİM ANAHTARI</div>
+          <div class="dkc-val" id="dash-key-val" style="font-size:12px;letter-spacing:2px">—</div>
+        </div>
+        <div style="text-align:center;padding:0 8px;border-left:1px solid var(--border);border-right:1px solid var(--border)">
+          <div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:2px">LİMİTSİZ</div>
+          <div style="font-family:var(--font-h);font-size:22px;color:var(--cyan);letter-spacing:2px;text-shadow:0 0 15px var(--cyan);line-height:1">∞</div>
+        </div>
+        <div style="text-align:center;padding:0 8px;border-right:1px solid var(--border)">
+          <div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:2px">KALAN HAK</div>
+          <div style="display:flex;align-items:baseline;gap:3px;justify-content:center">
+            <span style="font-family:var(--font-h);font-size:26px;color:var(--danger);text-shadow:0 0 12px var(--danger);line-height:1" id="dash-remaining">0</span>
+            <span style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">/1</span>
+          </div>
+        </div>
+        <div class="dlimit-badge"><div class="dlimit-dot"></div>LİMİT DOLDU</div>
+      </div>
+    </div>
+    <div class="dash-inv-hdr">
+      <div class="dash-inv-title">
+        <div class="div-bar"></div>
+        <div class="div-txt">Oyun Envanteri</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:7px">
+        <div class="div-badge" id="dash-inv-count">1 OYUN</div>
+        <input class="dash-search" placeholder="Ara..." oninput="filterDashItems(this.value)"/>
+      </div>
+    </div>
+    <div id="dash-items-list"></div>
+    <div class="dash-hist-wrap">
+      <div class="dash-hist-hdr">
+        <div class="hist-bar"></div>
+        <div class="hist-title">Hesap Geçmişim</div>
+        <div class="hist-badge" id="dash-history-count">1 KAYIT</div>
+      </div>
+      <div class="hist-table">
+        <div class="hist-row-head">
+          <span class="hist-col-lbl">Oyun</span>
+          <span class="hist-col-lbl">Kullanıcı Adı</span>
+          <span class="hist-col-lbl">Şifre</span>
+          <span class="hist-col-lbl">Tarih</span>
+        </div>
+        <div id="dash-history-list"></div>
+      </div>
+    </div>
+    <div class="acct-bottom-pad"></div>
+  </div>
+</div>
+
+<!-- STEP 3 MODAL -->
+<div class="dash-overlay hidden step-full" id="acct-modal">
+  <div class="dash-backdrop"></div>
+  <div class="step-page-bg" id="acct-bg">
+    <div class="sp-aurora"></div>
+    <div class="sp-pool-1"></div>
+    <div class="sp-pool-2"></div>
+    <div class="sp-vignette"></div>
+    <canvas class="sp-stars" id="acct-stars-canvas" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+  </div>
+  <div class="acct-box" id="acct-box">
+    <div class="acct-topbar">
+      <div style="display:flex;align-items:center;gap:7px">
+        <div class="dash-ts-logo" id="acct-ts-abbr">TS</div>
+        <div style="width:7px;height:7px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);border-radius:50%"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="step-indicator" style="position:static;transform:none;background:transparent;border:none;padding:0;backdrop-filter:none">
+          <div class="step-dot done">1</div>
+          <div class="step-line"></div>
+          <div class="step-dot done">2</div>
+          <div class="step-line"></div>
+          <div class="step-dot active">3</div>
+        </div>
+        <button onclick="closeDash()" class="dtb-exit-btn">↩ ÇIKIŞ</button>
+      </div>
+    </div>
+    <div id="acct-content"></div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="modal-overlay hidden" id="admin-login-modal" onclick="if(event.target===this||event.target.classList.contains('modal-backdrop'))closeModal('admin-login-modal')">
+  <div class="modal-backdrop"></div>
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('admin-login-modal')">✕</button>
+    <div style="text-align:center;margin-bottom:22px">
+      <div class="modal-icon">🔐</div>
+      <h2 class="modal-title">Admin Girişi</h2>
+      <p class="modal-sub">// Yönetim paneli</p>
+    </div>
+    <input type="password" id="adm-pass" class="fi" placeholder="Şifre girin"
+      onkeydown="if(event.key==='Enter')checkAdmin()" style="margin-bottom:7px"/>
+    <div id="adm-err" class="code-error hidden"></div>
+    <button onclick="checkAdmin()" style="width:100%;margin-top:12px;padding:14px;border:none;background:linear-gradient(135deg,var(--pink) 0%,var(--purple) 100%);color:#fff;font-weight:700;font-size:12px;cursor:pointer;font-family:var(--font-h);letter-spacing:4px;text-transform:uppercase;transition:all .2s;border-radius:10px">GİRİŞ YAP →</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay hidden" id="admin-panel">
+  <div class="admin-backdrop" onclick="closeAdmin()"></div>
+  <div class="admin-panel">
+    <div class="admin-hdr">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div style="width:28px;height:28px;border:1px solid var(--pink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 0 10px rgba(240,46,122,.3)">⚙</div>
+        <span style="font-family:var(--font-h);font-size:15px;font-weight:700;letter-spacing:-.3px;text-transform:uppercase">Admin Paneli</span>
+      </div>
+      <button class="ib ib-gst" onclick="closeAdmin()">✕ Kapat</button>
+    </div>
+    <div class="admin-tabs-row">
+      <button class="atab on" data-tab="dashboard" onclick="switchTab(this)">📊 Dashboard</button>
+      <button class="atab" data-tab="products" onclick="switchTab(this)">📦 Ürünler</button>
+      <button class="atab" data-tab="codes" onclick="switchTab(this)">🔑 Kodlar</button>
+      <button class="atab" data-tab="customers" onclick="switchTab(this)">👥 Müşteriler</button>
+      <button class="atab" data-tab="settings" onclick="switchTab(this)">⚙️ Ayarlar</button>
+    </div>
+    <div class="admin-body" id="admin-body"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════ BG PARTICLES ═══════════════════ */
+(function(){
+  const STAR_COLORS=['rgba(255,255,255,','rgba(210,210,255,','rgba(255,210,230,','rgba(190,220,255,'];
+
+  function makeStarField(canvas,count){
+    if(!canvas)return;
+    const ctx=canvas.getContext('2d');
+    let stars=[],shooters=[],t=0;
+    function init(){
+      canvas.width=canvas.offsetWidth||window.innerWidth;
+      canvas.height=canvas.offsetHeight||window.innerHeight;
+      stars=Array.from({length:count},()=>({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*1.4+.1,
+        base:Math.random()*.6+.1,
+        speed:Math.random()*1.2+.4,
+        phase:Math.random()*Math.PI*2,
+        color:STAR_COLORS[Math.floor(Math.random()*STAR_COLORS.length)]
+      }));
+      shooters=[];
+    }
+    function spawnShooter(){
+      return{x:Math.random()*canvas.width,y:Math.random()*canvas.height*.4,
+        vx:Math.random()*5+3,vy:Math.random()*2+1,
+        len:Math.random()*70+30,life:0,maxLife:38};
+    }
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      t+=.01;
+      stars.forEach(s=>{
+        const a=s.base*(0.5+0.5*Math.sin(t*s.speed+s.phase));
+        ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle=s.color+a+')';ctx.fill();
+      });
+      if(Math.random()<.003)shooters.push(spawnShooter());
+      shooters.forEach((sh,i)=>{
+        sh.life++;sh.x+=sh.vx;sh.y+=sh.vy;
+        const prog=sh.life/sh.maxLife;
+        const a=(prog<.5?prog/.5:1-((prog-.5)/.5))*.7;
+        ctx.save();
+        const grad=ctx.createLinearGradient(sh.x-sh.vx*4,sh.y-sh.vy*4,sh.x,sh.y);
+        grad.addColorStop(0,'rgba(255,255,255,0)');
+        grad.addColorStop(1,`rgba(255,255,255,${a})`);
+        ctx.strokeStyle=grad;ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(sh.x-sh.vx*4,sh.y-sh.vy*4);ctx.lineTo(sh.x,sh.y);
+        ctx.stroke();ctx.restore();
+        if(sh.life>=sh.maxLife)shooters.splice(i,1);
+      });
+      requestAnimationFrame(draw);
+    }
+    init();draw();
+    window.addEventListener('resize',init);
+  }
+
+  /* Stars only on step pages */
+  makeStarField(document.getElementById('s1-stars-canvas'),120);
+  makeStarField(document.getElementById('dash-stars-canvas'),120);
+  makeStarField(document.getElementById('acct-stars-canvas'),120);
+})();
+
+/* ═══════════════════ DATA ═══════════════════ */
+const ADMIN_PASS='vbshop2024';
+const WORKER_URL='https://vbshop.kazerevil.workers.dev';
+const INIT_PRODUCTS=[
+  {id:'netflix',name:'Netflix',abbr:'N',logoUrl:'',bgUrl:'',color:'#E50914',grad:'160deg,#5c0000 0%,#E50914 100%',tier:'Premium 4K',desc:'Sınırsız dizi & film izle',visible:true},
+  {id:'amazon',name:'Amazon Prime',abbr:'a',logoUrl:'',bgUrl:'',color:'#FF9900',grad:'160deg,#3d2200 0%,#FF9900 100%',tier:'Prime Video',desc:'Video & Hızlı Kargo',visible:true},
+  {id:'steam',name:'Steam',abbr:'S',logoUrl:'',bgUrl:'',color:'#66C0F4',grad:'160deg,#1B2838 0%,#2a475e 100%',tier:'Hesap',desc:'Geniş oyun kütüphanesi',visible:true},
+  {id:'spotify',name:'Spotify',abbr:'♫',logoUrl:'',bgUrl:'',color:'#1DB954',grad:'160deg,#0d3320 0%,#1DB954 100%',tier:'Premium',desc:'Reklamsız müzik dinle',visible:true},
+  {id:'youtube',name:'YouTube Premium',abbr:'▶',logoUrl:'',bgUrl:'',color:'#FF0000',grad:'160deg,#2d0000 0%,#FF0000 100%',tier:'Premium',desc:'Reklamsız YouTube izle',visible:true},
+  {id:'disney',name:'Disney+',abbr:'D+',logoUrl:'',bgUrl:'',color:'#0063E5',grad:'160deg,#000f5c 0%,#0063E5 100%',tier:'Premium',desc:'Disney · Marvel · Star Wars',visible:true},
+  {id:'hbo',name:'HBO Max',abbr:'HBO',logoUrl:'',bgUrl:'',color:'#A855F7',grad:'160deg,#1a0033 0%,#A855F7 100%',tier:'Premium',desc:'Ödüllü dizi ve filmler',visible:true},
+  {id:'crunchyroll',name:'Crunchyroll',abbr:'CR',logoUrl:'',bgUrl:'',color:'#F47521',grad:'160deg,#3d1a00 0%,#F47521 100%',tier:'Premium',desc:'En büyük anime platformu',visible:true},
+];
+
+function dbg(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}}
+function dbs(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
+
+let products=dbg('vbshop:products',INIT_PRODUCTS);
+let codes=dbg('vbshop:codes',{});
+let logoTaps=0,logoTimer=null;
+let newCF=[{key:'E-posta',val:''},{key:'Şifre',val:''}];
+let selProd=products[0]?.id||'';
+let codeFilter='all',codeSearch='';
+
+async function kvLoad(){
+  try{const res=await fetch(WORKER_URL+'/data');const data=await res.json();
+    if(data.products){
+      const local=dbg('vbshop:products',INIT_PRODUCTS);
+      const merged=data.products.map(rp=>{
+        const lp=local.find(x=>x.id===rp.id);
+        return{...rp,logoUrl:rp.logoUrl||lp?.logoUrl||'',bgUrl:rp.bgUrl||lp?.bgUrl||''};
+      });
+      products=merged;dbs('vbshop:products',products);
+    }
+    if(data.codes){codes=data.codes;dbs('vbshop:codes',codes);}
+    renderCards();
+  }catch(e){console.warn('KV load failed',e);}
+}
+async function kvSave(payload){
+  try{await fetch(WORKER_URL+'/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});}catch(e){console.warn('KV save failed',e);}
+}
+function saveProds(p){products=p;dbs('vbshop:products',p);kvSave({products:p});renderCards();}
+function saveCodes(c){codes=c;dbs('vbshop:codes',c);kvSave({codes:c});}
+
+kvLoad();
+
+document.getElementById('logo-wrap').addEventListener('click',()=>{
+  clearTimeout(logoTimer);
+  if(++logoTaps>=5){logoTaps=0;openAdminLogin();return;}
+  logoTimer=setTimeout(()=>logoTaps=0,2000);
+});
+
+function openModal(id){document.getElementById(id).classList.remove('hidden');}
+function closeModal(id){document.getElementById(id).classList.add('hidden');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDash();closeModal('admin-login-modal');closeAdmin();}});
+
+/* ═══════════════════ RENDER CARDS ═══════════════════ */
+function brandLogoHTML(prod,size=46){
+  const s=size+'px';
+  if(prod.logoUrl)return`<div class="brand-logo" style="width:${s};height:${s};"><img src="${prod.logoUrl}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=brand-fb style=color:${prod.color};font-size:${Math.round(size*.35)}px>${prod.abbr}</div>'"/></div>`;
+  return`<div class="brand-logo" style="width:${s};height:${s};"><div class="brand-fb" style="color:${prod.color};font-size:${Math.round(size*.35)}px">${prod.abbr}</div></div>`;
+}
+
+function renderCards(){
+  const grid=document.getElementById('products-grid');
+  const visible=products.filter(p=>p.visible!==false).sort((a,b)=>(a.order??99)-(b.order??99));
+  document.getElementById('prod-count').textContent=visible.length+' ürün';
+  const maxW=Math.max(...visible.map(p=>p.cardWidth||230));
+  grid.style.gridTemplateColumns=`repeat(auto-fill,minmax(${Math.min(maxW,340)}px,1fr))`;
+  grid.innerHTML=visible.map((p,i)=>{
+    const stockEntries=Object.values(codes).filter(c=>c.productId===p.id&&!c.used).length;
+    const effectiveSoldOut=p.soldOut||false;
+    const imgH=p.imgHeight||148;
+    const corner=p.cardCorner||'clip';
+    const clipStyle=corner==='rounded'?'border-radius:16px':corner==='sharp'?'border-radius:4px':'border-radius:14px';
+    const bg=p.bgUrl?`<img src="${p.bgUrl}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;" onerror="this.remove()"/>`:``;
+    const priceHtml=p.price?`<span style="font-family:var(--font-mono);font-size:10px;color:var(--yellow);letter-spacing:1px;font-weight:600">${p.price}</span>`:'';
+    return`<div class="pcard" style="--d:${i*.07}s;${clipStyle}">
+      <div class="pshine"></div>
+      <div class="pcard-top" style="height:${imgH}px">
+        <div class="pcard-color" style="background:linear-gradient(${p.grad||('160deg,#111 0%,'+p.color+' 100%')})"></div>
+        <div class="pcard-blob" style="background:${p.color}"></div>
+        ${bg}
+        <div class="pcard-bg-overlay"></div>
+        <div class="pcard-content">
+          <div class="pcard-row1">
+            ${brandLogoHTML(p)}
+            <span class="tier-tag">${p.tier||'Hesap'}</span>
+          </div>
+          <div>
+            <div class="pcard-name">${p.name}</div>
+            <div class="pcard-desc">${p.desc||''}</div>
+          </div>
+        </div>
+      </div>
+      <div class="pcard-bottom">
+        <div class="stock-row">
+          <div class="stock-dot ${(effectiveSoldOut||stockEntries===0)?'stock-none':''}"></div>
+          <span class="stock-txt" style="color:${(effectiveSoldOut||stockEntries===0)?'var(--danger)':'var(--muted2)'}">
+            ${effectiveSoldOut?'Tükendi':stockEntries===0?'Stok Yok':'Stokta'}
+          </span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          ${priceHtml}
+          <span class="card-cta">KOD İLE ERİŞ →</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════ SUBMIT CODE ═══════════════════ */
+async function submitCode(){
+  const inp=document.getElementById('hero-code-input');
+  const errEl=document.getElementById('hero-code-error');
+  const btn=document.getElementById('hero-submit-btn');
+  const c=inp.value.trim().toUpperCase();
+  if(!c)return;
+  btn.disabled=true;btn.textContent='⏳ Kontrol ediliyor...';
+  errEl.classList.add('hidden');
+  await new Promise(r=>setTimeout(r,650));
+  const data=codes[c];
+  if(!data){errEl.textContent='⚠ Geçersiz kod. Lütfen tekrar kontrol edin.';errEl.classList.remove('hidden');btn.disabled=false;btn.textContent='DEVAM';return;}
+  if(data.used){errEl.textContent='⚠ Bu kod zaten kullanılmış.';errEl.classList.remove('hidden');btn.disabled=false;btn.textContent='DEVAM';return;}
+  saveCodes({...codes,[c]:{...data,used:true,usedAt:new Date().toISOString()}});
+  inp.value='';btn.disabled=false;btn.textContent='DEVAM';
+  const prod=products.find(p=>p.id===data.productId);
+  openCredsModal(prod,data.credentials,c);
+}
+
+function esc(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+
+/* ═══════════════════ MODAL SYSTEM ═══════════════════ */
+let _dashProd=null,_dashCreds=null,_dashCode='',_otpTimer=null,_otpSeconds=0;
+
+function closeDash(){
+  ['step1-modal','dash-modal','acct-modal'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  clearOtpTimer();
+}
+
+function openCredsModal(prod,creds,code){
+  _dashProd=prod;_dashCreds=creds;_dashCode=code;
+  document.getElementById('s1-prod-area').innerHTML=prod
+    ?`<div style="display:flex;justify-content:center;margin-bottom:10px">
+        <div class="s1-prod-icon" style="background:linear-gradient(135deg,${prod.color}40,${prod.color}80)">
+          ${prod.logoUrl?`<img src="${prod.logoUrl}" style="width:100%;height:100%;object-fit:cover"/>`:`<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--font-h);font-size:22px;color:${prod.color}">${prod.abbr}</div>`}
+        </div>
+      </div>
+      <h2 style="font-family:var(--font-h);font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px;text-align:center;text-transform:uppercase">${prod.name}</h2>
+      <div style="text-align:center"><div class="s1-tier-badge">${prod.tier}</div></div>`
+    :`<h2 style="font-family:var(--font-h);font-size:22px;font-weight:800;margin-bottom:14px;text-align:center;text-transform:uppercase">Ürün</h2>`;
+  document.getElementById('s1-codeline').textContent='KOD: '+code;
+  document.getElementById('step1-modal').classList.remove('hidden');
+}
+
+function s1Copy(val,id){
+  navigator.clipboard.writeText(val).catch(()=>{});
+  const b=document.getElementById('s1cpb-'+id);
+  if(b){b.textContent='✓';b.classList.add('ok');setTimeout(()=>{if(b){b.textContent='Kopyala';b.classList.remove('ok');}},1500);}
+}
+
+function openDashboard(){
+  document.getElementById('step1-modal').classList.add('hidden');
+  const prod=_dashProd,code=_dashCode;
+  const abbr=prod?prod.abbr.slice(0,2):'TS';
+  document.getElementById('dash-ts-abbr').textContent=abbr;
+  document.getElementById('acct-ts-abbr').textContent=abbr;
+  document.getElementById('dash-key-val').textContent=code||'—';
+  document.getElementById('dash-key-topbar').textContent=code||'—';
+  document.getElementById('dash-remaining').textContent='0';
+  document.getElementById('dash-inv-count').textContent='1 OYUN';
+  const creds=_dashCreds||{};
+  const usedAt=codes[_dashCode]?.usedAt;
+  const dateStr=usedAt?new Date(usedAt).toLocaleDateString('tr-TR',{day:'2-digit',month:'2-digit',year:'numeric'})+' '+new Date(usedAt).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'}):'—';
+  const emailVal=Object.entries(creds).find(([k])=>k.toLowerCase().includes('mail')||k.toLowerCase().includes('posta'))?.[1]||'—';
+  const passVal=Object.entries(creds).find(([k])=>k.toLowerCase().includes('şifre')||k.toLowerCase().includes('pass'))?.[1]||'—';
+  const prodIcon=prod?.logoUrl?`<img src="${prod.logoUrl}" style="width:26px;height:26px;object-fit:cover;border-radius:6px"/>`:`<div style="width:26px;height:26px;background:linear-gradient(135deg,${prod?.color||'#4c7cff'}40,${prod?.color||'#4c7cff'}80);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:${prod?.color||'#4c7cff'};font-family:var(--font-h);border-radius:6px">${prod?.abbr||'?'}</div>`;
+  document.getElementById('dash-history-count').textContent='1 KAYIT';
+  document.getElementById('dash-history-list').innerHTML=`
+    <div class="hist-row">
+      <div style="display:flex;align-items:center;gap:6px">${prodIcon}<span style="font-size:11px;font-weight:600">${prod?.name||'?'}</span></div>
+      <span style="font-family:var(--font-mono);font-size:10px;color:var(--text2)">${emailVal}</span>
+      <span style="font-family:var(--font-mono);font-size:10px;filter:blur(4px);color:var(--text2)">${passVal}</span>
+      <span style="font-family:var(--font-mono);font-size:9px;color:var(--muted)">${dateStr}</span>
+    </div>`;
+  document.getElementById('dash-items-list').innerHTML=`
+    <div class="dash-item-card">
+      ${prod?.bgUrl?`<img class="dash-item-img" src="${prod.bgUrl}" onerror="this.style.display='none'"/>`:`<div class="dash-item-img-ph" style="background:linear-gradient(${prod?.grad||'160deg,#111 0%,#333 100%'})">${prod?.abbr||'?'}</div>`}
+      <div class="dash-item-badges">
+        <span class="dash-got-badge">ALINDI</span>
+        <span class="dash-plat-badge">${prod?.tier||'Hesap'}</span>
+      </div>
+      <div class="dash-item-info">
+        <div class="dash-item-name">${prod?.name||'Ürün'}</div>
+        <button class="dash-goto-btn" onclick="openAccountDetail()">HESAP BİLGİLERİ →</button>
+      </div>
+    </div>`;
+  document.getElementById('dash-modal').classList.remove('hidden');
+}
+
+function openAccountDetail(){
+  document.getElementById('dash-modal').classList.add('hidden');
+  const prod=_dashProd,creds=_dashCreds||{},code=_dashCode;
+  const usedAt=codes[code]?.usedAt;
+  const dateStr=usedAt?new Date(usedAt).toLocaleDateString('tr-TR',{day:'2-digit',month:'2-digit',year:'numeric'})+' '+new Date(usedAt).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'}):'—';
+  const note=localStorage.getItem('vbshop:prodnote:'+prod?.id)||localStorage.getItem('vbshop:note:'+code)||'';
+  const otpSecret=creds['2fa']||creds['totp']||creds['otp']||'';
+  const unlocked=!!localStorage.getItem('vbshop:kodgen:'+code);
+
+  const getIcon=(k)=>{
+    const kl=k.toLowerCase();
+    if(kl.includes('mail')||kl.includes('posta')||kl.includes('user')||kl.includes('kullan'))return'👤';
+    if(kl.includes('şifre')||kl.includes('pass')||kl.includes('parola'))return'🔒';
+    return'📋';
+  };
+
+  document.getElementById('acct-content').innerHTML=`
+    <div class="acct-hero">
+      ${prod?.bgUrl
+        ?`<img class="acct-hero-img" src="${prod.bgUrl}" onerror="this.style.display='none'"/>`
+        :`<div class="acct-hero-img" style="background:linear-gradient(${prod?.grad||'160deg,#0c0c24 0%,#333 100%'});display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:64px;opacity:.7">${prod?.abbr||'?'}</div>`
+      }
+      <div class="acct-hero-overlay"></div>
+      <div class="acct-hero-badges">
+        <span class="acct-plat-badge">${prod?.tier||'Hesap'}</span>
+        <span class="acct-active-badge"><span class="acct-active-dot"></span>AKTİF VARLIK</span>
+      </div>
+    </div>
+    <div class="acct-title">${prod?.name||'Ürün'}</div>
+    <div class="acct-date">${dateStr} tarihinde teslim alındı</div>
+
+    ${Object.entries(creds).filter(([k])=>!['2fa','totp','otp'].includes(k.toLowerCase())).map(([k,v],i)=>{
+      const isPass=k.toLowerCase().includes('şifre')||k.toLowerCase().includes('pass')||k.toLowerCase().includes('parola');
+      const icon=getIcon(k);
+      return`
+      <div class="acct-field" style="animation-delay:${.08*i}s">
+        <div class="acct-field-icon">${icon}</div>
+        <div class="acct-field-inner">
+          <div class="acct-field-label">${k.toUpperCase()}</div>
+          <div class="acct-field-val${isPass?' blurred':''}" id="afv-${i}">${esc(v)}</div>
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          ${isPass?`<button class="acct-copy-btn" onclick="toggleBlur('afv-${i}',this)">Göster</button>`:''}
+          <button class="acct-copy-btn" id="acpb-${i}" onclick="acctCopy('${esc(v)}','${i}')">Kopyala</button>
+        </div>
+      </div>`;
+    }).join('')}
+
+    ${note?`
+    <div class="acct-note-box">
+      <div class="acct-note-icon">⚡</div>
+      <div>
+        <div class="acct-note-lbl">HESAP NOTU</div>
+        <div class="acct-note-txt">${note}</div>
+      </div>
+    </div>`:''}
+
+    ${otpSecret&&unlocked?`<div class="acct-2fa">
+      <div class="acct-2fa-head">
+        <div class="acct-2fa-left">
+          <div class="acct-2fa-icon">🔐</div>
+          <div><div class="acct-2fa-label">2FA Kodu</div><div class="acct-2fa-sub">// Otomatik yenileniyor</div></div>
+        </div>
+      </div>
+      <div class="otp-display">
+        <div class="otp-code" id="otp-code-display">------</div>
+        <div class="otp-progress"><div class="otp-bar-fill" id="otp-bar" style="width:100%"></div></div>
+        <div class="otp-timer" id="otp-timer">-- sn</div>
+      </div>
+    </div>`:''}
+    ${otpSecret?`<div style="margin:8px 16px 0;animation:fade-up .35s ease both .3s">
+      <button id="kodgen-btn" onclick="doKodUret('${code}')" ${unlocked?'disabled':''}
+        style="width:100%;padding:13px;background:${unlocked?'transparent':'rgba(0,232,204,.06)'};border:1px solid ${unlocked?'var(--border)':'rgba(0,232,204,.3)'};border-radius:10px;color:${unlocked?'var(--muted)':'var(--cyan)'};font-family:var(--font-h);font-size:12px;letter-spacing:3px;cursor:${unlocked?'not-allowed':'pointer'};transition:all .2s;font-weight:700">
+        ⚡ 2FA KODU GÖSTER${unlocked?' (Aktif)':''}
+      </button>
+      <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);text-align:center;margin-top:6px;letter-spacing:2px">
+        ${unlocked?'Canlı güncelleniyor · Her 30 saniyede yenilenir':'Sadece 1 kez açılabilir'}
+      </div>
+    </div>`:''}
+    <div class="acct-bottom-pad"></div>`;
+  if(otpSecret&&unlocked)startOtpTimer(otpSecret);
+  document.getElementById('acct-modal').classList.remove('hidden');
+}
+
+function toggleBlur(id,btn){
+  const el=document.getElementById(id);
+  if(!el)return;
+  const isBlurred=el.classList.contains('blurred');
+  el.classList.toggle('blurred',!isBlurred);
+  btn.textContent=isBlurred?'Gizle':'Göster';
+}
+
+function acctCopy(val,id){
+  navigator.clipboard.writeText(val).catch(()=>{});
+  const b=document.getElementById('acpb-'+id);
+  if(b){b.textContent='✓';b.classList.add('ok');setTimeout(()=>{if(b){b.textContent='Kopyala';b.classList.remove('ok');}},1500);}
+}
+
+function clearOtpTimer(){if(_otpTimer){clearInterval(_otpTimer);_otpTimer=null;}}
+
+/* ── Gerçek TOTP (RFC 6238) ── */
+async function calcTotp(secret){
+  try{
+    const b32='ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+    const s=secret.toUpperCase().replace(/[\s=]/g,'');
+    let bits='';
+    for(const c of s){const v=b32.indexOf(c);if(v>=0)bits+=v.toString(2).padStart(5,'0');}
+    const bytes=[];
+    for(let i=0;i+8<=bits.length;i+=8)bytes.push(parseInt(bits.slice(i,i+8),2));
+    if(!bytes.length)return null;
+    const counter=Math.floor(Date.now()/1000/30);
+    const cb=new Uint8Array(8);
+    let c=counter;
+    for(let i=7;i>=0;i--){cb[i]=c&0xff;c=Math.floor(c/256);}
+    const key=await crypto.subtle.importKey('raw',new Uint8Array(bytes),{name:'HMAC',hash:'SHA-1'},false,['sign']);
+    const sig=new Uint8Array(await crypto.subtle.sign('HMAC',key,cb));
+    const off=sig[19]&0xf;
+    const code=((sig[off]&0x7f)<<24|sig[off+1]<<16|sig[off+2]<<8|sig[off+3])%1000000;
+    return code.toString().padStart(6,'0');
+  }catch(e){return null;}
+}
+
+async function doKodUret(accessCode){
+  const k='vbshop:kodgen:'+accessCode;
+  if(localStorage.getItem(k))return;
+  localStorage.setItem(k,'1');
+  openAccountDetail();
+}
+
+function startOtpTimer(secret){
+  clearOtpTimer();
+  async function update(){
+    const now=Math.floor(Date.now()/1000);
+    const remaining=30-(now%30);
+    const pct=(remaining/30)*100;
+    const el=document.getElementById('otp-code-display');
+    const bar=document.getElementById('otp-bar');
+    const timerEl=document.getElementById('otp-timer');
+    if(bar)bar.style.width=pct+'%';
+    if(timerEl)timerEl.textContent=remaining+' sn';
+    if(el){
+      const code=await calcTotp(secret);
+      if(code)el.textContent=code.slice(0,3)+' '+code.slice(3);
+      else el.textContent='••• •••';
+    }
+  }
+  update();
+  _otpTimer=setInterval(update,1000);
+}
+
+function filterDashItems(q){
+  const items=document.querySelectorAll('.dash-item-card');
+  items.forEach(c=>{const name=c.querySelector('.dash-item-name')?.textContent||'';c.style.display=q&&!name.toLowerCase().includes(q.toLowerCase())?'none':'';});
+}
+
+/* ═══════════════════ ADMIN ═══════════════════ */
+function openAdminLogin(){openModal('admin-login-modal');setTimeout(()=>document.getElementById('adm-pass')?.focus(),100);}
+function checkAdmin(){
+  const pass=document.getElementById('adm-pass')?.value;
+  const err=document.getElementById('adm-err');
+  if(pass===ADMIN_PASS){closeModal('admin-login-modal');document.getElementById('adm-pass').value='';openAdmin();}
+  else{err.textContent='⚠ Hatalı şifre.';err.classList.remove('hidden');}
+}
+function openAdmin(){
+  document.getElementById('admin-panel').classList.remove('hidden');
+  renderTab('dashboard');setActive('dashboard');
+}
+function closeAdmin(){document.getElementById('admin-panel').classList.add('hidden');}
+function switchTab(btn){renderTab(btn.dataset.tab);setActive(btn.dataset.tab);}
+function setActive(tab){document.querySelectorAll('.atab').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));}
+function renderTab(tab){
+  const body=document.getElementById('admin-body');
+  if(tab==='dashboard')renderDashboardTab(body);
+  else if(tab==='products')renderProductsTab(body);
+  else if(tab==='codes')renderCodesTab(body);
+  else if(tab==='customers')renderCustomersTab(body);
+  else if(tab==='settings')renderSettingsTab(body);
+}
+
+/* ── DASHBOARD TAB ── */
+function renderDashboardTab(c){
+  const allCodes=Object.entries(codes);
+  const usedCodes=allCodes.filter(([,v])=>v.used);
+  const unusedCodes=allCodes.filter(([,v])=>!v.used);
+  const totalProds=products.filter(p=>p.visible!==false).length;
+
+  const usedByProd={};
+  usedCodes.forEach(([,v])=>{
+    const n=products.find(p=>p.id===v.productId)?.name||'Bilinmeyen';
+    usedByProd[n]=(usedByProd[n]||0)+1;
+  });
+  const topProds=Object.entries(usedByProd).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  const recentSales=usedCodes.sort((a,b)=>new Date(b[1].usedAt||0)-new Date(a[1].usedAt||0)).slice(0,5);
+
+  c.innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
+      ${[
+        ['Toplam Kod',allCodes.length,'var(--text)'],
+        ['Satıldı',usedCodes.length,'var(--success)'],
+        ['Bekliyor',unusedCodes.length,'var(--cyan)'],
+        ['Ürün',totalProds,'var(--pink)']
+      ].map(([l,v,color])=>`
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">${l}</div>
+          <div style="font-family:var(--font-h);font-size:26px;color:${color};font-weight:800">${v}</div>
+        </div>`).join('')}
+    </div>
+    ${recentSales.length?`
+    <div style="margin-bottom:10px">
+      <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">SON SATIŞLAR</div>
+      ${recentSales.map(([code,data])=>{
+        const prod=products.find(p=>p.id===data.productId);
+        return`<div style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px">
+          ${brandLogoHTML(prod||{abbr:'?',color:'#6b7280'},24)}
+          <div style="flex:1;min-width:0">
+            <div style="font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:1px">${code}</div>
+            <div style="font-size:10px;color:var(--muted2)">${prod?.name||'?'} · ${new Date(data.usedAt).toLocaleDateString('tr')}</div>
+          </div>
+          <span class="status-pill pill-red">Satıldı</span>
+        </div>`;}).join('')}
+    </div>`:''}
+    ${topProds.length?`
+    <div>
+      <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">EN ÇOK SATAN</div>
+      ${topProds.map(([name,count])=>`
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:5px">
+          <span style="font-size:12px;font-weight:600">${name}</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--cyan)">${count} satış</span>
+        </div>`).join('')}
+    </div>`:''}`;
+}
+
+/* ── CUSTOMERS TAB ── */
+function renderCustomersTab(c){
+  const usedCodes=Object.entries(codes).filter(([,v])=>v.used).sort((a,b)=>new Date(b[1].usedAt||0)-new Date(a[1].usedAt||0));
+  if(!usedCodes.length){
+    c.innerHTML=`<div style="text-align:center;padding:40px 0;color:var(--muted);font-family:var(--font-mono)"><div style="font-size:36px;margin-bottom:7px">👥</div><div>// Henüz müşteri bulunmuyor</div></div>`;
+    return;
+  }
+  c.innerHTML=usedCodes.map(([code,data])=>{
+    const prod=products.find(p=>p.id===data.productId);
+    const creds=data.credentials||{};
+    const email=Object.entries(creds).find(([k])=>k.toLowerCase().includes('mail')||k.toLowerCase().includes('posta'))?.[1]||'—';
+    const usedAt=data.usedAt?new Date(data.usedAt).toLocaleDateString('tr-TR'):'—';
+    return`<div class="code-row">
+      ${brandLogoHTML(prod||{abbr:'?',color:'#6b7280'},27)}
+      <div style="flex:1;min-width:0">
+        <div style="font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:1px">${email}</div>
+        <div style="font-size:10px;color:var(--muted2);font-family:var(--font-mono)">${prod?.name||'?'} · ${usedAt}</div>
+      </div>
+      <span class="status-pill pill-red">Kullanıldı</span>
+    </div>`;
+  }).join('');
+}
+
+/* ── PRODUCTS TAB ── */
+function renderProductsTab(c){
+  c.innerHTML=`
+    <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+      <button class="ib ib-pri" onclick="showAddProduct()">+ Ürün Ekle</button>
+    </div>
+    ${products.map(p=>`
+      <div class="prod-row" style="opacity:${p.visible===false?.5:1}">
+        ${brandLogoHTML(p,32)}
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;font-size:12px;letter-spacing:-.2px">${p.name}</div>
+          <div style="font-size:10px;color:var(--muted2);font-family:var(--font-mono)">${p.tier||''} · ${Object.values(codes).filter(c=>c.productId===p.id&&!c.used).length} stok</div>
+        </div>
+        <div style="display:flex;gap:4px">
+          <button class="ib ib-gst" onclick="editProd('${p.id}')">✏</button>
+          <button class="ib ib-sec" onclick="toggleProd('${p.id}')">${p.visible===false?'👁':'🙈'}</button>
+          <button class="ib ib-red" onclick="delProd('${p.id}')">🗑</button>
+        </div>
+      </div>`).join('')}`;
+}
+
+let prodMode='new',prodEditId='',prodCF=[];
+function showAddProduct(){prodMode='new';prodEditId='';prodCF=[];renderProdForm();}
+function editProd(id){
+  prodMode='edit';prodEditId=id;
+  const p=products.find(x=>x.id===id);
+  if(!p)return;
+  prodCF=[];
+  const codeWithCreds=Object.values(codes).find(c=>c.productId===id&&c.credentials);
+  if(codeWithCreds)prodCF=Object.entries(codeWithCreds.credentials||{}).map(([key,val])=>({key,val}));
+  renderProdForm(p);
+}
+function renderProdForm(p={}){
+  const body=document.getElementById('admin-body');
+  const note=p.id?localStorage.getItem('vbshop:prodnote:'+p.id)||'':'';
+  body.innerHTML=`
+    <div style="animation:fade-in .2s ease">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:14px">
+        <button class="ib ib-gst" onclick="renderTab('products');setActive('products')">← Geri</button>
+        <span style="font-weight:700;font-size:13px;font-family:var(--font-h);letter-spacing:1px">${prodMode==='new'?'YENİ ÜRÜN':'ÜRÜN DÜZENLE'}</span>
+      </div>
+      <div class="prod-edit-form">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div><label class="fl">Ürün Adı *</label><input class="fi" id="pf-name" value="${p.name||''}" placeholder="Netflix"/></div>
+          <div><label class="fl">Kısa Kod (abbr)</label><input class="fi" id="pf-abbr" value="${p.abbr||''}" placeholder="N"/></div>
+          <div><label class="fl">Tier / Plan</label><input class="fi" id="pf-tier" value="${p.tier||''}" placeholder="Premium 4K"/></div>
+          <div><label class="fl">Açıklama</label><input class="fi" id="pf-desc" value="${p.desc||''}" placeholder="Kısa açıklama"/></div>
+          <div><label class="fl">Renk</label><input class="fi" id="pf-color" value="${p.color||'#ff00aa'}" placeholder="#ff00aa"/></div>
+          <div><label class="fl">Gradient (CSS)</label><input class="fi" id="pf-grad" value="${p.grad||''}" placeholder="160deg,#111 0%,#ff00aa 100%"/></div>
+          <div><label class="fl">Logo URL</label><input class="fi" id="pf-logo" value="${p.logoUrl||''}" placeholder="https://..."/></div>
+          <div><label class="fl">Arkaplan URL</label><input class="fi" id="pf-bg" value="${p.bgUrl||''}" placeholder="https://..."/></div>
+          <div><label class="fl">Fiyat</label><input class="fi" id="pf-price" value="${p.price||''}" placeholder="₺99"/></div>
+          <div><label class="fl">Sıra</label><input class="fi" type="number" id="pf-order" value="${p.order||99}"/></div>
+          <div><label class="fl">Görsel Yükseklik (px)</label><input class="fi" type="number" id="pf-imgheight" value="${p.imgHeight||148}"/></div>
+          <div><label class="fl">Kart Genişliği (px)</label><input class="fi" type="number" id="pf-cardwidth" value="${p.cardWidth||230}"/></div>
+          <div><label class="fl">Kart Köşe Stili</label>
+            <select class="fsel" id="pf-corner">
+              <option value="clip" ${(p.cardCorner||'clip')==='clip'?'selected':''}>Clip</option>
+              <option value="rounded" ${p.cardCorner==='rounded'?'selected':''}>Rounded</option>
+              <option value="sharp" ${p.cardCorner==='sharp'?'selected':''}>Sharp</option>
+            </select>
+          </div>
+          <div><label class="fl">Tükendi</label>
+            <select class="fsel" id="pf-soldout">
+              <option value="0" ${!p.soldOut?'selected':''}>Hayır</option>
+              <option value="1" ${p.soldOut?'selected':''}>Evet</option>
+            </select>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
+              <label class="fl" style="margin:0">Varsayılan Hesap Alanları</label>
+              <button class="ib ib-gst" onclick="prodCF.push({key:'',val:''});renderProdForm(${JSON.stringify(p)})">+ Alan</button>
+            </div>
+            ${prodCF.map((cf,i)=>`
+              <div style="display:flex;gap:5px;margin-bottom:5px;align-items:center">
+                <input value="${cf.key}" placeholder="Alan" class="fi" style="width:110px;flex:none" oninput="prodCF[${i}].key=this.value"/>
+                <input value="${cf.val}" placeholder="Değer" class="fi" style="flex:1" oninput="prodCF[${i}].val=this.value"/>
+                <button onclick="prodCF.splice(${i},1);renderProdForm(${JSON.stringify(p)})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;font-family:var(--font-mono)">✕</button>
+              </div>`).join('')}
+          </div>
+          <div><label class="fl">Ürün Notu (müşteriye gösterilir)</label>
+            <input class="fi" id="pf-note" value="${note}" placeholder="Giriş notu..."/>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="ib ib-pri" onclick="saveProd()">💾 Kaydet</button>
+            <button class="ib ib-sec" onclick="renderTab('products');setActive('products')">İptal</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function saveProd(){
+  const name=document.getElementById('pf-name')?.value.trim();
+  const mode=prodMode,id=prodEditId;
+  if(!name){alert('Ürün adı zorunlu!');return;}
+  const p={
+    id:mode==='new'?(name.toLowerCase().replace(/\s+/g,'-')+'-'+Date.now()):id,
+    name,
+    abbr:document.getElementById('pf-abbr')?.value.trim()||name.slice(0,2).toUpperCase(),
+    tier:document.getElementById('pf-tier')?.value.trim()||'',
+    desc:document.getElementById('pf-desc')?.value.trim()||'',
+    color:document.getElementById('pf-color')?.value.trim()||'#ff00aa',
+    grad:document.getElementById('pf-grad')?.value.trim()||'',
+    logoUrl:document.getElementById('pf-logo')?.value.trim()||'',
+    bgUrl:document.getElementById('pf-bg')?.value.trim()||'',
+    price:document.getElementById('pf-price')?.value.trim()||'',
+    order:parseInt(document.getElementById('pf-order')?.value)||99,
+    imgHeight:parseInt(document.getElementById('pf-imgheight')?.value)||148,
+    cardWidth:parseInt(document.getElementById('pf-cardwidth')?.value)||230,
+    cardCorner:document.getElementById('pf-corner')?.value||'clip',
+    soldOut:document.getElementById('pf-soldout')?.value==='1',
+    visible:true,
+  };
+  const note=document.getElementById('pf-note')?.value||'';
+  if(note)dbs('vbshop:prodnote:'+p.id,note);
+  if(prodCF.length){
+    const credObj=Object.fromEntries(prodCF.filter(c=>c.key).map(c=>[c.key,c.val]));
+    const updatedCodes={...codes};
+    Object.keys(updatedCodes).forEach(k=>{if(updatedCodes[k].productId===id){updatedCodes[k]={...updatedCodes[k],credentials:credObj};if(note)dbs('vbshop:note:'+k,note);}});
+    saveCodes(updatedCodes);
+  }
+  let newProds=mode==='new'?[...products,p]:products.map(x=>x.id===id?p:x);
+  newProds.sort((a,b)=>(a.order??99)-(b.order??99));
+  saveProds(newProds);
+  renderTab('products');setActive('products');
+}
+function delProd(id){if(!confirm('Bu ürünü silmek istediğinden emin misin?'))return;saveProds(products.filter(p=>p.id!==id));}
+function toggleProd(id){saveProds(products.map(p=>p.id===id?{...p,visible:p.visible===false?true:false}:p));renderTab('products');}
+
+/* ── CODES TAB ── */
+function renderCodesTab(c){
+  const entries=Object.entries(codes);
+  const counts={all:entries.length,used:entries.filter(([,v])=>v.used).length,unused:entries.filter(([,v])=>!v.used).length};
+  const filtered=entries.filter(([k,v])=>{
+    if(codeFilter==='used'&&!v.used)return false;
+    if(codeFilter==='unused'&&v.used)return false;
+    if(codeSearch&&!k.includes(codeSearch.toUpperCase()))return false;
+    return true;
+  });
+  c.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:7px">
+      <div style="display:flex;gap:4px">
+        ${[['all','Tümü'],['unused','Bekleyen'],['used','Kullanılmış']].map(([k,l])=>`
+          <button class="ftab ${codeFilter===k?'on':''}" onclick="codeFilter='${k}';renderTab('codes');setActive('codes')">${l} (${counts[k]})</button>`).join('')}
+      </div>
+      <div style="display:flex;gap:5px">
+        <input class="fi mono" style="width:140px" placeholder="Kod ara..." value="${codeSearch}"
+          oninput="codeSearch=this.value;renderTab('codes');setActive('codes')"/>
+        <button class="ib ib-pri" onclick="showAddCode()">+ Kod Ekle</button>
+      </div>
+    </div>
+    ${filtered.length===0
+      ?`<div style="text-align:center;padding:40px 0;color:var(--muted);font-family:var(--font-mono)"><div style="font-size:36px;margin-bottom:7px">📭</div><div>// Henüz kod bulunmuyor</div></div>`
+      :filtered.map(([code,data])=>{
+        const prod=products.find(p=>p.id===data.productId);
+        return`<div class="code-row">
+          ${brandLogoHTML(prod||{abbr:'?',color:'#6b7280'},27)}
+          <div style="flex:1;min-width:0">
+            <div style="font-family:var(--font-mono);font-weight:600;font-size:11px;letter-spacing:2px">${code}</div>
+            <div style="font-size:10px;color:var(--muted2);font-family:var(--font-mono)">${prod?.name||'?'} · ${Object.keys(data.credentials||{}).length} alan${data.usedAt?' · '+new Date(data.usedAt).toLocaleDateString('tr'):''}</div>
+          </div>
+          <div style="display:flex;gap:4px;align-items:center">
+            <span class="status-pill ${data.used?'pill-red':'pill-ok'}">${data.used?'Kullanıldı':'Bekliyor'}</span>
+            <button class="ib ib-gst" id="cc-${code}" onclick="cpCode('${code}')">📋</button>
+            ${data.used?`<button class="ib ib-sec" onclick="resetCode('${code}')">↩</button>`:''}
+            <button class="ib ib-red" onclick="delCode('${code}')">🗑</button>
+          </div>
+        </div>`;}).join('')}`;
+}
+
+function cpCode(code){navigator.clipboard.writeText(code).catch(()=>{});const b=document.getElementById('cc-'+code);if(b){b.textContent='✓';setTimeout(()=>{if(b)b.textContent='📋';},1400);}}
+function resetCode(code){saveCodes({...codes,[code]:{...codes[code],used:false,usedAt:undefined}});renderTab('codes');}
+function delCode(code){const u={...codes};delete u[code];saveCodes(u);renderTab('codes');}
+function genCode(){const ch='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';return Array.from({length:3},()=>Array.from({length:4},()=>ch[Math.floor(Math.random()*ch.length)]).join('')).join('-');}
+function showAddCode(){newCF=[{key:'E-posta',val:''},{key:'Şifre',val:''}];selProd=products[0]?.id||'';renderAddCodeForm();}
+
+function renderAddCodeForm(){
+  const body=document.getElementById('admin-body');
+  body.innerHTML=`
+    <div style="animation:fade-in .2s ease">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:14px">
+        <button class="ib ib-gst" onclick="renderTab('codes');setActive('codes')">← Geri</button>
+        <span style="font-weight:700;font-size:13px;font-family:var(--font-h);letter-spacing:1px">YENİ KOD EKLE</span>
+      </div>
+      <div class="prod-edit-form">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div><label class="fl">Ürün</label>
+            <select class="fsel" id="acf-prod" onchange="selProd=this.value">
+              ${products.map(p=>`<option value="${p.id}" ${p.id===selProd?'selected':''}>${p.abbr} ${p.name}</option>`).join('')}
+            </select>
+          </div>
+          <div><label class="fl">Kod (boş = otomatik)</label>
+            <div style="display:flex;gap:6px">
+              <input class="fi mono" id="acf-code" placeholder="XXXX-XXXX-XXXX" oninput="this.value=this.value.toUpperCase()"/>
+              <button class="ib ib-sec" style="white-space:nowrap" onclick="document.getElementById('acf-code').value=genCode()">🎲 Oluştur</button>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
+              <label class="fl" style="margin:0">Hesap Bilgileri</label>
+              <button class="ib ib-gst" onclick="newCF.push({key:'',val:''});renderAddCodeForm()">+ Alan</button>
+            </div>
+            ${newCF.map((cf,i)=>`
+              <div style="display:flex;gap:5px;margin-bottom:5px;align-items:center">
+                <input value="${cf.key}" placeholder="Alan" class="fi" style="width:110px;flex:none" oninput="newCF[${i}].key=this.value"/>
+                <input value="${cf.val}" placeholder="Değer" class="fi mono" style="flex:1" oninput="newCF[${i}].val=this.value"/>
+                <button onclick="newCF.splice(${i},1);renderAddCodeForm()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;font-family:var(--font-mono)">✕</button>
+              </div>`).join('')}
+          </div>
+          <div class="otp-box">✅ Otomatik OTP aktif: Cloudflare Worker entegrasyonu bağlı.</div>
+          <div><label class="fl">Hesap Notu (müşteriye gösterilir)</label>
+            <input class="fi" id="acf-note" placeholder="Örn: Giriş yaparken 'Beni Hatırla' seçeneğini seçiniz." value="Giriş yaparken 'Beni Hatırla' seçeneğini seçiniz."/>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="ib ib-pri" onclick="saveNewCode()">💾 Kodu Kaydet</button>
+            <button class="ib ib-sec" onclick="renderTab('codes');setActive('codes')">İptal</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  setActive('codes');
+}
+
+function saveNewCode(){
+  const inp=document.getElementById('acf-code');
+  const code=(inp?.value.trim()||genCode()).toUpperCase();
+  if(codes[code]){alert('Bu kod zaten mevcut!');return;}
+  const prodId=document.getElementById('acf-prod')?.value||selProd;
+  const credObj=Object.fromEntries(newCF.filter(c=>c.key).map(c=>[c.key,c.val]));
+  const note=document.getElementById('acf-note')?.value||'';
+  if(note)dbs('vbshop:note:'+code,note);
+  saveCodes({...codes,[code]:{productId:prodId,credentials:credObj,used:false,multiUse:false,createdAt:new Date().toISOString()}});
+  renderTab('codes');setActive('codes');
+}
+
+/* ── SETTINGS TAB ── */
+function renderSettingsTab(c){
+  c.innerHTML=`
+    <div style="max-width:480px">
+      <div class="settings-card"><div class="settings-card-title">🔐 Admin Şifresi</div><div style="font-size:11px;color:var(--muted2);line-height:1.7;font-family:var(--font-mono)">Varsayılan: <code style="color:var(--pink)">vbshop2024</code>. HTML'de <code style="color:var(--pink)">ADMIN_PASS</code> sabitini değiştir.</div></div>
+      <div class="settings-card"><div class="settings-card-title">☁️ Cloudflare Workers</div><div style="font-size:11px;color:var(--muted2);line-height:1.7;font-family:var(--font-mono)">Bu dosyayı Cloudflare Pages'ta yayınla. İleride backend için Workers + KV Store kullanabilirsin.</div></div>
+      <div class="settings-card"><div class="settings-card-title">🔒 Tek Kullanım Sistemi</div><div style="font-size:11px;color:var(--muted2);line-height:1.7;font-family:var(--font-mono)">Tüm kodlar tek seferlik geçerlidir. Kullanıldığı an otomatik kilitlenir. Admin'den ↩ ile sıfırlayabilirsin.</div></div>
+      <div class="settings-card"><div class="settings-card-title">⚡ Kullanım Kılavuzu</div><ol style="padding-left:16px;line-height:2.2;color:var(--muted2);font-size:11px;font-family:var(--font-mono)"><li>Ürünler sekmesinden ürün ekle/düzenle</li><li>İkon ve arka plan görselini admin'den yükle</li><li>Kod satışı sonrası Kodlar → + Kod Ekle</li><li>Oluşan kodu müşteriye gönder</li><li>Müşteri kodu girer, bilgiler görünür, kod kilitlenir</li></ol></div>
+    </div>`;
+}
+
+/* init */
+renderCards();
+</script>
+</body>
+</html>
